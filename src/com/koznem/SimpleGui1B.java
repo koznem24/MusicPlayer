@@ -2,37 +2,37 @@ package com.koznem;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class SimpleGui1B implements ActionListener {
-
-    JButton button;
-    MyDrawPanel drawPanel = new MyDrawPanel();
-
+class SimpleGui1B{
     public static void main(String[] args) {
-        SimpleGui1B gui = new SimpleGui1B();
-        gui.go();
+        SimpleGui1B object = new SimpleGui1B();
+
+        object.go();
+    }
+
+
+
+    public void play(){
+
     }
 
     public void go(){
         JFrame frame = new JFrame();
-//        button = new JButton("Click me");
-//
-//        button.addActionListener((actionEvent)->button.setText("I have been clicked"));
-//
-//        frame.getContentPane().add(button);
+        MyDrawPanel myDrawPanel = new MyDrawPanel();
+        JButton button = new JButton("Click me");
 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().add(BorderLayout.EAST,new Button("Button1"));
-        frame.getContentPane().add(BorderLayout.WEST, new Button("Button2"));
-        frame.setSize(300, 300);
+        button.addActionListener(x-> frame.repaint());
+
+        frame.getContentPane().add(BorderLayout.SOUTH, button);
+        frame.getContentPane().add(BorderLayout.CENTER, myDrawPanel);
+
+
+
         frame.setVisible(true);
+        frame.setSize(600, 600);
+
 
     }
 
-    @Override
-    public void actionPerformed(ActionEvent actionEvent) {
-        button.setText("I've been clicked!");
-    }
+
 }
